@@ -267,6 +267,12 @@ ret_code_t app_timer_stop_all(void);
  */
 uint32_t app_timer_cnt_get(void);
 
+/**@brief Function for returning the current value of the timer including RTC overflow
+ *
+ * @return    Current value of the timer
+ */
+uint64_t app_timer_get_now(void);
+
 /**@brief Function for computing the difference between two RTC1 counter values.
  *
  * @param[in]  ticks_to       Value returned by app_timer_cnt_get().

@@ -626,6 +626,11 @@ uint32_t app_timer_cnt_get(void)
     return drv_rtc_counter_get(&m_rtc_inst);
 }
 
+uint64_t app_timer_get_now(void)
+{
+    return get_now();
+}
+
 void app_timer_pause(void)
 {
     drv_rtc_stop(&m_rtc_inst);
