@@ -203,7 +203,7 @@ void ble_dfu_buttonless_on_sys_evt(uint32_t sys_evt, void * p_context)
 }
 
 
-uint32_t ble_dfu_buttonless_char_add(ble_dfu_buttonless_t * p_dfu)
+uint32_t ble_dfu_buttonless_char_add(ble_dfu_buttonless_t * p_dfu, security_req_t sec)
 {
     ble_add_char_params_t add_char_params;
 
@@ -216,9 +216,9 @@ uint32_t ble_dfu_buttonless_char_add(ble_dfu_buttonless_t * p_dfu)
     add_char_params.is_var_len          = true;
     add_char_params.max_len             = BLE_GATT_ATT_MTU_DEFAULT;
 
-    add_char_params.cccd_write_access = SEC_OPEN;
-    add_char_params.write_access      = SEC_OPEN;
-    add_char_params.read_access       = SEC_OPEN;
+    add_char_params.cccd_write_access = sec;
+    add_char_params.write_access      = sec;
+    add_char_params.read_access       = sec;
 
     return characteristic_add(p_dfu->service_handle, &add_char_params, &p_dfu->control_point_char);
 }

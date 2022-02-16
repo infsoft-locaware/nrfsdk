@@ -316,7 +316,7 @@ uint32_t ble_dfu_buttonless_init(const ble_dfu_buttonless_init_t * p_dfu_init)
     VERIFY_SUCCESS(err_code);
 
     // Add the Buttonless DFU Characteristic (with bonds/without bonds).
-    err_code = ble_dfu_buttonless_char_add(&m_dfu);
+    err_code = ble_dfu_buttonless_char_add(&m_dfu, p_dfu_init->sec);
     VERIFY_SUCCESS(err_code);
 
     return NRF_SUCCESS;

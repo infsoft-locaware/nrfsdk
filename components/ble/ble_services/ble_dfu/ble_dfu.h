@@ -143,6 +143,7 @@ typedef struct
 typedef struct
 {
     ble_dfu_buttonless_evt_handler_t   evt_handler;                       /**< Bootloader event handler. */
+	security_req_t					   sec;
 } ble_dfu_buttonless_init_t;
 
 
@@ -187,10 +188,11 @@ uint32_t ble_dfu_buttonless_backend_init(ble_dfu_buttonless_t * p_dfu);
  * @note This will be implemented differently on bonded/unbonded Buttonless DFU service.
  *
  * @param[in] p_dfu       Nordic DFU Service structure.
+ * @param[in] sec         Security requirement for buttonless characteristic
  *
  * @return NRF_SUCCESS on success, otherwise an error code.
  */
-uint32_t ble_dfu_buttonless_char_add(ble_dfu_buttonless_t * p_dfu);
+uint32_t ble_dfu_buttonless_char_add(ble_dfu_buttonless_t * p_dfu, security_req_t sec);
 
 
 /**@brief Function for sending a response back to the client.
