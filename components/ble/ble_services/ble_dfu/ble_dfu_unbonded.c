@@ -216,6 +216,11 @@ uint32_t ble_dfu_buttonless_char_add(ble_dfu_buttonless_t * p_dfu, security_req_
     add_char_params.is_var_len          = true;
     add_char_params.max_len             = BLE_GATT_ATT_MTU_DEFAULT;
 
+	if (sec == 0) {
+		// fallbacko for older versions
+		sec = SEC_OPEN;
+	}
+
     add_char_params.cccd_write_access = sec;
     add_char_params.write_access      = sec;
     add_char_params.read_access       = sec;
