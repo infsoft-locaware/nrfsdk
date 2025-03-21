@@ -155,9 +155,9 @@ ret_code_t nrf_bootloader_flash_protect(uint32_t address, uint32_t size)
 
 void nrf_bootloader_app_start_final(uint32_t vector_table_addr)
 {
+#if !NRF_DFU_NO_PROTECT
     ret_code_t ret_val;
 
-#if !NRF_DFU_NO_PROTECT
     // Size of the flash area to protect.
     uint32_t area_size;
 
