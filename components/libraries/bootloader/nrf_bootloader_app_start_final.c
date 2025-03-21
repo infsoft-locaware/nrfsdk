@@ -157,6 +157,7 @@ void nrf_bootloader_app_start_final(uint32_t vector_table_addr)
 {
     ret_code_t ret_val;
 
+#if !NRF_DFU_NO_PROTECT
     // Size of the flash area to protect.
     uint32_t area_size;
 
@@ -182,6 +183,7 @@ void nrf_bootloader_app_start_final(uint32_t vector_table_addr)
         NRF_LOG_ERROR("Could not protect SoftDevice and application, 0x%x.", ret_val);
     }
     APP_ERROR_CHECK(ret_val);
+#endif
 
     // Run application
     app_start(vector_table_addr);
